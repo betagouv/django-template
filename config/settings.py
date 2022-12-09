@@ -55,6 +55,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "csp.middleware.CSPMiddleware",
+    "django_referrer_policy.middleware.ReferrerPolicyMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -139,3 +141,15 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
+
+# CSP-related options
+SECURE_HSTS_SECONDS = 2592000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+X_FRAME_OPTIONS = "DENY"
+
+CSP_DEFAULT_SRC = "self"
+
+REFERRER_POLICY = "no-referrer"
