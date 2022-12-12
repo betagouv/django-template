@@ -2,19 +2,22 @@
 
 ## Introduction
 
-Ce repo est un kit de démarrage pour vos projets en Django 3.2. Il intègrera à terme :
+Ce repo est un kit de démarrage pour vos projets en Django 3.2. Il intègre :
 
 - le DSFR
-- des Content Security Policies
+- des Content Security Policies avec django-csp
 - Pre-commit, pour formatter votre code à chaque commit
 - une ébauche de CI pour vos tests automatiques
+- les paramètres pour se connecter à une base de données PostgreSQL
 
 ## Utilisation
 
 ### Installation de base
 
 Copier les variables d'environnement :
-`cp .env.example .env`
+```
+cp .env.example .env
+```
 
 ### Installation de PostgreSQL
 
@@ -39,4 +42,10 @@ Vous pouvez effectuer un premier passage sur tous les fichiers du repo avec :
 
 ```bash
 pre-commit run --all-files
+```
+
+### Exécuter les tests manuellement
+
+```bash
+python manage.py test
 ```
