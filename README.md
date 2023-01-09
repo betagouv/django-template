@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Ce repo est un kit de démarrage pour vos projets en Django 3.2. Il intègre :
+Ce repo est un kit de démarrage pour vos projets en Django. Il intègre :
 
-- le DSFR
+- le [Design System de l'Etat](https://www.systeme-de-design.gouv.fr/) (DSFR) avec [django-dsfr](https://pypi.org/project/django-dsfr/)
 - des Content Security Policies avec django-csp
 - Pre-commit, pour formatter votre code à chaque commit
 - une ébauche de CI pour vos tests automatiques
