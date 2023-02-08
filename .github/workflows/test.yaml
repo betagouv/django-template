@@ -29,6 +29,11 @@ jobs:
       - name: Copy empty .env.example to .env
         run: |
           cp .env.example .env
+      - name: Run linting
+        run: |
+          black --check .
+          flake8
+          isort . --check
       - name: Run the unit tests
         run: |
           python manage.py test
