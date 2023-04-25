@@ -19,10 +19,12 @@ Copier les variables d'environnement :
 cp .env.example .env
 ```
 
+puis modifier en le contenu pour correspondre à votre configuration.
+
 ### Installation de PostgreSQL
 
 Installer PostgreSQL en fonction de votre OS : https://www.postgresql.org/download/
-puis créer une base de données au nom choisi dans DATABASE_NAME de votre fichier .env.
+puis créer une base de données au nom choisi dans DATABASE_URI de votre fichier .env.
 
 ### Installation de pre-commit
 
