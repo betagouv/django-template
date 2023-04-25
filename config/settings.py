@@ -87,15 +87,16 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
 postgres_uri = urlparse(os.getenv("DATABASE_URI"))
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": postgres_uri.path[1:],
-        "USER": postgres_uri.username,
-        "PASSWORD": postgres_uri.password,
-        "HOST": postgres_uri.hostname,
-        "PORT": postgres_uri.port,
+        "NAME": postgres_uri.path[1:] or os.getenv("DATABASE_NAME"),
+        "USER": postgres_uri.username or os.getenv("DATABASE_USER"),
+        "PASSWORD": postgres_uri.password or os.getenv("DATABASE_PASSWORD"),
+        "HOST": postgres_uri.hostname or os.getenv("DATABASE_HOST"),
+        "PORT": postgres_uri.port or os.getenv("DATABASE_PORT"),
     }
 }
 
