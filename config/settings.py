@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 import os
 from pathlib import Path
+from urllib.parse import urlparse
 
 from dotenv import load_dotenv
 
@@ -87,17 +88,17 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+postgres_uri = urlparse(os.getenv("DATABASE_URI"))
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DATABASE_NAME"),
-        "USER": os.getenv("DATABASE_USER"),
-        "PASSWORD": os.getenv("DATABASE_PASSWORD"),
-        "HOST": os.getenv("DATABASE_HOST"),
-        "PORT": os.getenv("DATABASE_PORT"),
+        "NAME": postgres_uri.path[1:] or os.getenv("DATABASE_NAME"),
+        "USER": postgres_uri.username or os.getenv("DATABASE_USER"),
+        "PASSWORD": postgres_uri.password or os.getenv("DATABASE_PASSWORD"),
+        "HOST": postgres_uri.hostname or os.getenv("DATABASE_HOST"),
+        "PORT": postgres_uri.port or os.getenv("DATABASE_PORT"),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
