@@ -10,21 +10,44 @@ Ce repo est un kit de démarrage pour vos projets en Django. Il intègre :
 - une ébauche de CI pour vos tests automatiques
 - les paramètres pour se connecter à une base de données PostgreSQL
 
-## Utilisation
+## Use
 
-### Installation de base
+```bash
+# Activate your desired environment with
+. venv/bin/activate
+
+# and run server
+python manage.py runserver
+```
+
+## Installation
+
+### Edit .env
 
 Copier les variables d'environnement :
 ```
 cp .env.example .env
 ```
-
 puis modifier en le contenu pour correspondre à votre configuration.
 
-### Installation de PostgreSQL
+### Installer l'environnement
+
+```
+python -m venv venv 
+
+. venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### Configurer la base de données
 
 Installer PostgreSQL en fonction de votre OS : https://www.postgresql.org/download/
 puis créer une base de données au nom choisi dans DATABASE_URI de votre fichier .env.
+
+```bash
+python manage.py migrate
+```
 
 ### Installation de pre-commit
 
